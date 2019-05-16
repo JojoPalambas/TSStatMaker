@@ -21,4 +21,5 @@ from StatViz import views as sv_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', sv_views.index, name='index'),
+    path('init/', sv_views.init, name='index'),
 ]
