@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from StatViz import views as sv_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', sv_views.index, name='index'),
 ]
