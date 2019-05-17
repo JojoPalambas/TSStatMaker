@@ -1,4 +1,4 @@
-from StatViz.models import Project, Task, Pause
+from StatViz.models import Task
 from db import prettify_data
 
 
