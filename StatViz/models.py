@@ -5,7 +5,7 @@ class Task(models.Model):
     name = models.CharField(max_length=128)
     project_name = models.CharField(max_length=128)
     start_date = models.DateField()
-    start_time = models.DateTimeField()
+    start_time = models.TimeField()
     duration = models.DurationField()
     pause_duration = models.DurationField()
 

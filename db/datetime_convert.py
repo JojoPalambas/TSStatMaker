@@ -1,5 +1,6 @@
 import datetime
 
+
 def convert(value, format):
     if format == "MM/DD/YY":
         split_value = value.split("/")
@@ -12,5 +13,5 @@ def convert(value, format):
         return datetime.time((int(hm[0]) + 12) % 24, int(hm[1]), 0)
     if format == "HH:MM:SS":
         split_value = value.split(":")
-        return datetime.time(int(split_value[0]), int(split_value[1]), int(split_value[2]))
+        return datetime.timedelta(hours=int(split_value[0]), minutes=int(split_value[1]), seconds=int(split_value[2]))
     return None
