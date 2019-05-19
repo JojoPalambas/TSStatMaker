@@ -19,10 +19,13 @@ def index(request):
 
 def line_per_project(request):
     tasks = Task.objects.all()
-    projects = []
 
-    # Building the list of the projects names
+    # Building the list of the projects names and getting the first and last dates
+    projects = []
+    first_date = datetime.datetime.now().date()
+    last_date = datetime.date(1970, 1, 1)
     for task in tasks:
+        # Project-listing part
         placed = False
         for project in projects:
             if project == task.project_name:
@@ -31,17 +34,33 @@ def line_per_project(request):
         if not placed:
             projects.append(task.project_name)
 
+        # Date extremums part
+        if task.start_date < first_date:
+            first_date = task.start_date
+        if task.start_date > last_date:
+            last_date = task.start_date
+
     # Building as an histogram all the dates
+    histogram = []
+    current_date = first_date
+    while current_date <= last_date:
+        new_entry = [current_date]
+        for project in projects:
+            new_entry.append(0)
+        histogram.append(new_entry)
+        current_date = current_date + datetime.timedelta(days=1)
+
+    # Filling the histogram
 
     # Fake data to be sent
     dated_tasks = [
         [datetime.date(2019, 5, 13), "240", "60", "0"],
-        [datetime.date(2019, 5, 14), "350", "75", "0"],
-        [datetime.date(2019, 5, 15), "400", "0", "0"],
-        [datetime.date(2019, 5, 16), "380", "40", "180"],
-        [datetime.date(2019, 5, 17), "120", "120", "60"],
-        [datetime.date(2019, 5, 18), "0", "60", "120"],
-        [datetime.date(2019, 5, 19), "60", "60", "60"],
+        [datetime.date(2019, 5, 14), "590", "135", "0"],
+        [datetime.date(2019, 5, 15), "990", "135", "0"],
+        [datetime.date(2019, 5, 16), "1370", "175", "180"],
+        [datetime.date(2019, 5, 17), "1490", "295", "240"],
+        [datetime.date(2019, 5, 18), "1490", "355", "360"],
+        [datetime.date(2019, 5, 19), "1550", "415", "420"],
     ]
     projects = ["EPITA", "RIX", "Petits jeux & programmes"]
 
