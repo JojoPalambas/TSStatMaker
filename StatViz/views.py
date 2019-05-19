@@ -17,7 +17,7 @@ def index(request):
     return render(request, 'StatViz/dashboard.html', context)
 
 
-def line_per_project(request):
+def sub_line_per_project(request, accumulate=False):
     tasks = Task.objects.all()
 
     # Building the list of the projects names and getting the first and last dates
@@ -63,22 +63,23 @@ def line_per_project(request):
                         entry[i + 1] += (task.duration.seconds + 24*3600*task.duration.days) / 60
                         continue
                 continue
-    print(histogram)
 
-    # Fake data to be sent
-    dated_tasks = [
-        [datetime.date(2019, 5, 13), "240", "60", "0"],
-        [datetime.date(2019, 5, 14), "590", "135", "0"],
-        [datetime.date(2019, 5, 15), "990", "135", "0"],
-        [datetime.date(2019, 5, 16), "1370", "175", "180"],
-        [datetime.date(2019, 5, 17), "1490", "295", "240"],
-        [datetime.date(2019, 5, 18), "1490", "355", "360"],
-        [datetime.date(2019, 5, 19), "1550", "415", "420"],
-    ]
-    #projects = ["EPITA", "RIX", "Petits jeux & programmes"]
+    # Accumulating the values if needed
+    if accumulate:
+        for i in range(len(histogram) - 1):
+            for j in range(len(histogram[i + 1]) - 1):
+                histogram[i + 1][j + 1] += histogram[i][j + 1]
 
     context = {
         "projects": projects,
         "dated_tasks": histogram
     }
     return render(request, 'StatViz/line_per_project.html', context)
+
+
+def line_per_project(request):
+    return sub_line_per_project(request)
+
+
+def line_per_project_accumulate(request):
+    return sub_line_per_project(request, accumulate=True)

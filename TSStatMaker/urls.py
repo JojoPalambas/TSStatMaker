@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', sv_views.index, name='index'),
     path('init/', sv_views.init, name='index'),
+    path('projects_accu', sv_views.line_per_project_accumulate, name='project_accu'),
     path('projects/', sv_views.line_per_project, name='project'),
 ]
