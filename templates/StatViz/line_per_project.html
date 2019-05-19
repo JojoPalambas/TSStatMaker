@@ -54,7 +54,8 @@
 <body>
   <h1>Per project</h1>
   {% for project in projects %}
-      <label>{{ project.name }}</label>
+      {{ project }}
+      <br/>
   {% endfor %}
   <div id="line_top_x"></div>
 </body>

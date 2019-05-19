@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from db import init as init_db
+import datetime
 
 from StatViz.models import Task
 
@@ -19,16 +20,15 @@ def index(request):
 def line_per_project(request):
     tasks = Task.objects.all()
     projects = []
-    # Building the projects list with their names and 
+    # Building the projects list with their names and
     for task in tasks:
         placed = False
-        for fp in projects:
-            if fp["name"] == task.project_name:
+        for project in projects:
+            if project == task.project_name:
                 placed = True
-                fp["tasks"].append(task)
                 continue
         if not placed:
-            projects.append({"name": task.project_name, "tasks": [task]})
+            projects.append(task.project_name)
 
     context = {
         "projects": projects

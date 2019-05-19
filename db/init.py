@@ -1,8 +1,7 @@
 from django import db
 from StatViz.models import Task
 from db import prettify_data
-import time
-
+from django.db import connection
 
 def reset():
     Task.objects.all().delete()
@@ -12,8 +11,8 @@ def reset():
     raw_data = f.read()
     f.close()
 
-    start_time = 0
     i = 0
+    tasks_to_create = []
     for line in prettify_data.raw_to_pretty_data(raw_data):
         i += 1
         task = Task(
@@ -25,8 +24,5 @@ def reset():
             duration=line[3],
             pause_duration=line[7]
         )
-        if time.time() - start_time > 1:
-            start_time = time.time()
-            db.connections.close_all()
-            print(str(i) + " " + task.name)
-        task.save()
+        tasks_to_create.append(task)
+    Task.objects.bulk_create(tasks_to_create)
