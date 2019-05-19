@@ -36,7 +36,8 @@
           title: 'Box Office Earnings in First Two Weeks of Opening',
           subtitle: 'in millions of dollars (USD)'
         },
-        height: 500,
+        height: 1000,
+        width: 1500,
         axes: {
           x: {
             0: {side: 'top'}
@@ -51,7 +52,10 @@
   </script>
 </head>
 <body>
-    <h1>Per project</h1>
+  <h1>Per project</h1>
+  {% for project in projects %}
+      <label>{{ project.name }}</label>
+  {% endfor %}
   <div id="line_top_x"></div>
 </body>
 </html>
