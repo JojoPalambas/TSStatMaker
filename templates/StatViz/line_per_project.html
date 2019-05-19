@@ -11,15 +11,24 @@
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Day');
         {% for project in projects %}
-            console.log("{{ project }}");
             data.addColumn('number', "{{ project }}");
         {% endfor %}
 
 
+        let firstVal = true;
         {% for task in dated_tasks %}
-            console.log("{{ task.0 }}");
+            var newRow = [new Date("{{ task.0 }}")];
+            firstVal = true;
+            {% for time in task %}
+                if (!firstVal) {
+                    newRow.push(parseInt("{{ time }}"))
+                }
+                else
+                    firstVal = false;
+            {% endfor %}
+            console.log(newRow);
             data.addRows([
-                [new Date("{{ task.0 }}"), parseInt("{{ task.1 }}"), parseInt("{{ task.2 }}"), parseInt("{{ task.3 }}")]
+                newRow
             ]);
         {% endfor %}
 

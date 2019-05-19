@@ -21,7 +21,7 @@ def line_per_project(request):
     tasks = Task.objects.all()
 
     # Building the list of the projects names and getting the first and last dates
-    projects = []
+    projects = ["ALL"]
     first_date = datetime.datetime.now().date()
     last_date = datetime.date(1970, 1, 1)
     for task in tasks:
@@ -51,6 +51,19 @@ def line_per_project(request):
         current_date = current_date + datetime.timedelta(days=1)
 
     # Filling the histogram
+    for task in tasks:
+        # Finds the line
+        for entry in histogram:
+            if entry[0] == task.start_date:
+                # Finds the column
+                for i in range(len(projects)):
+                    if projects[i] == task.project_name:
+                        # Conversion to minutes
+                        entry[1] += (task.duration.seconds + 24*3600*task.duration.days) / 60
+                        entry[i + 1] += (task.duration.seconds + 24*3600*task.duration.days) / 60
+                        continue
+                continue
+    print(histogram)
 
     # Fake data to be sent
     dated_tasks = [
@@ -62,10 +75,10 @@ def line_per_project(request):
         [datetime.date(2019, 5, 18), "1490", "355", "360"],
         [datetime.date(2019, 5, 19), "1550", "415", "420"],
     ]
-    projects = ["EPITA", "RIX", "Petits jeux & programmes"]
+    #projects = ["EPITA", "RIX", "Petits jeux & programmes"]
 
     context = {
         "projects": projects,
-        "dated_tasks": dated_tasks
+        "dated_tasks": histogram
     }
     return render(request, 'StatViz/line_per_project.html', context)
