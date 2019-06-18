@@ -9,8 +9,8 @@ from StatViz.models import Task
 # TODO Make the user enable/disable the "ALL" project
 # TODO Make the user change the start and the end of the chart
 
+
 def init(request):
-    context = {}
     init_db.reset()
     return HttpResponse("Init completed!")
 
@@ -20,26 +20,36 @@ def index(request):
     return render(request, 'StatViz/dashboard.html', context)
 
 
-def sub_line_per_project(request, accumulate=False):
+def sub_line_per_project(request, accumulate=False, data_type="projects"):
     print(request.GET)
 
     tasks = Task.objects.all()
 
-    # Building the list of the projects names and getting the first and last dates
-    projects, first_date, last_date = vu.projects_list(tasks)
+    # Filtering
+    tasks = vu.filter_tasks(tasks)
+
+    # Building the list of the data line names and getting the first and last dates
+    data, first_date, last_date = [], "", ""
+    if data_type == "projects":
+        data, first_date, last_date = vu.projects_list(tasks)
+    elif data_type == "tasks":
+        data, first_date, last_date = vu.tasks_list(tasks)
+    else:
+        data, first_date, last_date = vu.projects_list(tasks)
 
     # Building as an histogram all the dates
-    histogram = vu.generate_empty_histogram(first_date, last_date, len(projects))
+    histogram = vu.generate_empty_histogram(first_date, last_date, len(data))
 
     # Filling the histogram
-    histogram = vu.fill_histogram(histogram, tasks, projects)
+    histogram = vu.fill_histogram(histogram, tasks, data)
 
     # Accumulating the values if needed
     if accumulate:
         histogram = vu.accumulate_histogram(histogram)
 
     context = {
-        "projects": projects,
+        "data": data,
+        "data_type": data_type,
         "dated_tasks": histogram
     }
     return render(request, 'StatViz/line_per_project.html', context)
@@ -51,3 +61,7 @@ def line_per_project(request):
 
 def line_per_project_accumulate(request):
     return sub_line_per_project(request, accumulate=True)
+
+
+def line_per_task(request):
+    return sub_line_per_project(request, data_type="tasks")

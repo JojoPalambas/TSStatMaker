@@ -1,6 +1,13 @@
 import datetime
 
 
+def filter_tasks(tasks):
+    ret = []
+    for task in tasks:
+        ret.append(task)
+    return ret
+
+
 def projects_list(tasks):
     projects = ["ALL"]
     first_date = datetime.datetime.now().date()
@@ -21,6 +28,29 @@ def projects_list(tasks):
         if task.start_date > last_date:
             last_date = task.start_date
     return projects, first_date, last_date
+
+
+def tasks_list(tasks):
+    tasks_names = ["ALL"]
+    first_date = datetime.datetime.now().date()
+    last_date = datetime.date(1970, 1, 1)
+    for task in tasks:
+        task.project_name = task.project_name + " - " + task.name
+        # Project-listing part
+        placed = False
+        for task_name in tasks_names:
+            if task_name == task.project_name:
+                placed = True
+                continue
+        if not placed:
+            tasks_names.append(task.project_name)
+
+        # Date extremums part
+        if task.start_date < first_date:
+            first_date = task.start_date
+        if task.start_date > last_date:
+            last_date = task.start_date
+    return tasks_names, first_date, last_date
 
 
 def generate_empty_histogram(first_date, last_date, projects_nb):

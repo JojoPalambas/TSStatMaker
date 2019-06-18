@@ -3,6 +3,7 @@ from StatViz.models import Task
 from db import prettify_data
 from django.db import connection
 
+
 def reset():
     Task.objects.all().delete()
     print("Deletion complete!")

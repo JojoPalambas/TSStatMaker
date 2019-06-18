@@ -10,8 +10,8 @@
 
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Day');
-        {% for project in projects %}
-            data.addColumn('number', "{{ project }}");
+        {% for data_line in data %}
+            data.addColumn('number', "{{ data_line }}");
         {% endfor %}
 
 
@@ -34,7 +34,7 @@
 
       var options = {
         chart: {
-          title: 'Amount of time spent on every project',
+          title: 'Amount of time spent on all {{ data_type }}',
           subtitle: 'in minutes'
         },
         height: 1000,
