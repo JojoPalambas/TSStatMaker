@@ -7,6 +7,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        <h3>Filters</h3>
         <div class="row">
             <div class="col-12 mb-4">
                 <label for="display-mode-select">Display by:</label>
@@ -24,9 +25,18 @@
                 <input type="date" id="end-date-input" value="">
             </div>
             <div class="col-12 mt-4">
-                <button type="button" class="btn btn-primary">Filter</button>
+                <button type="button" class="btn btn-primary" onclick="debug('Filter')">Filter</button>
             </div>
         </div>
+        <hr>
+
+        <h3>Lines</h3>
+        <div id="line-chart-container"></div>
+
+        <hr>
+
+        <h3>Histogram</h3>
+        <div id="line-chart-container"></div>
     </div>
 </body>
 </html>
