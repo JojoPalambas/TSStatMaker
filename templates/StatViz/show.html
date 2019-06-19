@@ -3,7 +3,10 @@
 <html>
 <head>
     <script src="{% static 'js/show.js' %}"></script>
+    <script src="{% static 'js/show-lines.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">loadChart();</script>
 </head>
 <body>
     <div class="container mt-5">
@@ -25,7 +28,7 @@
                 <input type="date" id="end-date-input" value="">
             </div>
             <div class="col-12 mt-4">
-                <button type="button" class="btn btn-primary" onclick="debug('Filter')">Filter</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Filter')">Filter</button>
             </div>
         </div>
         <hr>
@@ -39,4 +42,9 @@
         <div id="line-chart-container"></div>
     </div>
 </body>
+
+<script type="text/javascript">
+    drawCurveTypes();
+</script>
+
 </html>
