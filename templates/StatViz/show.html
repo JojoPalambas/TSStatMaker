@@ -3,8 +3,30 @@
 <html>
 <head>
     <script src="{% static 'js/show.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
-  <div id="line_top_x"></div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <label for="display-mode-select">Display by:</label>
+                <select class="form-control" id="display-mode-select">
+                    <option>Project</option>
+                    <option>Task</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="start-date-input">Start date:</label>
+                <input type="date" id="start-date-input" value="">
+            </div>
+            <div class="col-6">
+                <label for="end-date-input">End date:</label>
+                <input type="date" id="end-date-input" value="">
+            </div>
+            <div class="col-12 mt-4">
+                <button type="button" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

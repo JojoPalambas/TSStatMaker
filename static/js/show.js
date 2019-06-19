@@ -1,1 +1,1 @@
-console.log("totor");
+console.log("OPEN show.js");
