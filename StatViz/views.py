@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from db import init as init_db
 import StatViz.views_utils as vu
-import datetime
 
 from StatViz.models import Task
 
@@ -54,7 +53,23 @@ def sub_line_per_project(request, accumulate=False, data_type="projects"):
 
 
 def show(request):
-    context = {}
+    raw_tasks = Task.objects.all()
+    tasks = []
+
+    for rt in raw_tasks:
+        tasks.append({
+            "id": rt.id,
+            "name": rt.name,
+            "project_name": rt.project_name,
+            "start_date": rt.start_date,
+            "start_time": rt.start_time,
+            "duration": rt.duration,
+            "pause_duration": rt.pause_duration
+        })
+
+    context = {
+        "tasks": tasks
+    }
     return render(request, 'StatViz/show.html', context)
 
 

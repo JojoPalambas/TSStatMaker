@@ -2,11 +2,25 @@
 {% load static %}
 <html>
 <head>
-    <script src="{% static 'js/show.js' %}"></script>
-    <script src="{% static 'js/show-lines.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">loadChart();</script>
+    <script src="{% static 'js/show.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <!-- Translates the Django data to a JavaScript object -->
+    <script type="text/javascript">
+        var tasks = [];
+        {% for task in tasks %}
+            tasks.push({
+            "id": "{{ task.id }}",
+            "name": "{{ task.name }}",
+            "project_name": "{{ task.project_name }}",
+            "start_date": "{{ task.start_date }}",
+            "start_time": "{{ task.start_time }}",
+            "duration": "{{ task.duration }}",
+            "pause_duration": "{{ task.pause_duration }}"
+            });
+        {% endfor %}
+    console.log(tasks);
+    </script>
 </head>
 <body>
     <div class="container mt-5">
@@ -44,6 +58,7 @@
 </body>
 
 <script type="text/javascript">
+    loadChart();
     drawCurveTypes();
 </script>
 
