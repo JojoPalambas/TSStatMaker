@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca753e67-b98e-4ef2-8af9-84a8f7b07422" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/show.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/StatViz/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TSStatMaker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TSStatMaker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StatViz/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/StatViz/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StatViz/views_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/StatViz/views_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TSStatMaker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TSStatMaker/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TSStatMaker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TSStatMaker/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/data" beforeDir="false" afterPath="$PROJECT_DIR$/db/data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/StatViz/line_per_project.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StatViz/line_per_project.html" afterDir="false" />
@@ -44,32 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/init.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prettify_data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/prettify_data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StatViz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="-10">
+              <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -77,20 +58,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StatViz/views_utils.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TSStatMaker/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            <state relative-caret-position="466">
+              <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TODO" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TODO">
+      <file leaf-file-name="show.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/show.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
+            <state>
+              <caret column="17" selection-start-column="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -98,8 +79,17 @@
       <file leaf-file-name="line_per_project.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/StatViz/line_per_project.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+            <state relative-caret-position="68">
+              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/StatViz/show.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -107,8 +97,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TSStatMaker/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="357">
+              <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
               <folding>
                 <element signature="e#635#667#0" expanded="true" />
               </folding>
@@ -119,28 +109,15 @@
       <file leaf-file-name="datetime_convert.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/datetime_convert.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="98" selection-start-line="15" selection-start-column="98" selection-end-line="15" selection-end-column="98" />
+            <state relative-caret-position="85">
+              <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StatViz/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/data">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="1533" column="140" selection-start-line="1533" selection-start-column="140" selection-end-line="1533" selection-end-column="140" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -150,6 +127,7 @@
       <list>
         <option value="HTML File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -161,6 +139,8 @@
       <find>projects</find>
       <find>project</find>
       <find>epita</find>
+      <find>static</find>
+      <find>staticfil</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,7 +153,6 @@
         <option value="$PROJECT_DIR$/TSStatMaker/views.py" />
         <option value="$PROJECT_DIR$/StatViz/templates/general/index.html" />
         <option value="$PROJECT_DIR$/StatViz/templates/general/dashboard.html" />
-        <option value="$PROJECT_DIR$/TSStatMaker/settings.py" />
         <option value="$PROJECT_DIR$/StatViz/admin.py" />
         <option value="$PROJECT_DIR$/init_db/init.py" />
         <option value="$PROJECT_DIR$/db/datetime_converters.py" />
@@ -181,14 +160,18 @@
         <option value="$PROJECT_DIR$/db/reset.py" />
         <option value="$PROJECT_DIR$/StatViz/models.py" />
         <option value="$PROJECT_DIR$/StatViz/migrations/0002_auto_20190517_1712.py" />
-        <option value="$PROJECT_DIR$/db/datetime_convert.py" />
-        <option value="$PROJECT_DIR$/db/init.py" />
-        <option value="$PROJECT_DIR$/templates/StatViz/line_per_project.html" />
-        <option value="$PROJECT_DIR$/TSStatMaker/urls.py" />
-        <option value="$PROJECT_DIR$/StatViz/views.py" />
         <option value="$PROJECT_DIR$/StatViz/views_utils.py" />
         <option value="$PROJECT_DIR$/TODO" />
+        <option value="$PROJECT_DIR$/db/init.py" />
         <option value="$PROJECT_DIR$/db/data" />
+        <option value="$PROJECT_DIR$/db/datetime_convert.py" />
+        <option value="$PROJECT_DIR$/templates/StatViz/line_per_project.html" />
+        <option value="$PROJECT_DIR$/TSStatMaker/urls.py" />
+        <option value="$PROJECT_DIR$/templates/StatViz/show.js" />
+        <option value="$PROJECT_DIR$/static/js/show.js" />
+        <option value="$PROJECT_DIR$/templates/StatViz/show.html" />
+        <option value="$PROJECT_DIR$/TSStatMaker/settings.py" />
+        <option value="$PROJECT_DIR$/StatViz/views.py" />
       </list>
     </option>
   </component>
@@ -213,6 +196,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -224,6 +208,11 @@
               <item name="TSStatMaker" type="b2602c69:ProjectViewProjectNode" />
               <item name="TSStatMaker" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TSStatMaker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TSStatMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TSStatMaker" type="b2602c69:ProjectViewProjectNode" />
@@ -250,7 +239,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -262,14 +250,15 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Données\Programmes\Django\TSStatMaker\StatViz" />
+      <recent name="E:\Données\Programmes\Django\TSStatMaker\static" />
+      <recent name="E:\Données\Programmes\Django\TSStatMaker\templates\StatViz" />
+      <recent name="E:\Données\Programmes\Django\TSStatMaker\templates\StatViz\static" />
+      <recent name="E:\Données\Programmes\Django\TSStatMaker\templates\StatViz\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Données\Programmes\Django\TSStatMaker\templates\StatViz" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Données\Programmes\Django\TSStatMaker\templates" />
-      <recent name="E:\Données\Programmes\Django\TSStatMaker" />
-      <recent name="E:\Données\Programmes\Django\TSStatMaker\TSStatMaker\templates\pages" />
-      <recent name="E:\Données\Programmes\Django\TSStatMaker\TSStatMaker" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -380,7 +369,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32897604" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29317698" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29957357" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
@@ -404,30 +393,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/init.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/prettify_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StatViz/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StatViz/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -439,9 +404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -504,9 +466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -586,9 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -669,13 +625,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TSStatMaker/views.py" />
     <entry file="file://$PROJECT_DIR$/TSStatMaker/templates/pages/dashboard.html" />
-    <entry file="file://$PROJECT_DIR$/TSStatMaker/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/StatViz/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -699,9 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -712,17 +658,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TODO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StatViz/views_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/datetime_convert.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="98" selection-start-line="15" selection-start-column="98" selection-end-line="15" selection-end-column="98" />
+        <state relative-caret-position="85">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TSStatMaker/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding>
+            <element signature="e#635#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StatViz/static/show.js" />
+    <entry file="file://$PROJECT_DIR$/templates/StatViz/line_per_project.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StatViz/show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/show.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TSStatMaker/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/init.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="75">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -738,49 +740,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/StatViz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="-10">
+          <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/StatViz/line_per_project.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StatViz/views_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TSStatMaker/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#635#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/data">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="1533" column="140" selection-start-line="1533" selection-start-column="140" selection-end-line="1533" selection-end-column="140" />
         </state>
       </provider>
     </entry>

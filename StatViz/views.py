@@ -21,8 +21,6 @@ def index(request):
 
 
 def sub_line_per_project(request, accumulate=False, data_type="projects"):
-    print(request.GET)
-
     tasks = Task.objects.all()
 
     # Filtering
@@ -53,6 +51,11 @@ def sub_line_per_project(request, accumulate=False, data_type="projects"):
         "dated_tasks": histogram
     }
     return render(request, 'StatViz/line_per_project.html', context)
+
+
+def show(request):
+    context = {}
+    return render(request, 'StatViz/show.html', context)
 
 
 def line_per_project(request):
