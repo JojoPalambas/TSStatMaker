@@ -61,10 +61,10 @@ def show(request):
             "id": rt.id,
             "name": rt.name,
             "project_name": rt.project_name,
-            "start_date": rt.start_date,
-            "start_time": rt.start_time,
-            "duration": rt.duration,
-            "pause_duration": rt.pause_duration
+            "start_date": str(rt.start_date),
+            "start_time": str(rt.start_time),
+            "duration": str(rt.duration),
+            "pause_duration": str(rt.pause_duration)
         })
 
     context = {
