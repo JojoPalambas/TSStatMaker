@@ -12,25 +12,33 @@
             tasks.push({
             "id": "{{ task.id }}",
             "name": "{{ task.name }}",
-            "project_name": "{{ task.project_name }}",
-            "start_date": "{{ task.start_date }}",
-            "start_time": "{{ task.start_time }}",
+            "project": "{{ task.project_name }}",
+            "startDate": "{{ task.start_date }}",
+            "startTime": "{{ task.start_time }}",
             "duration": "{{ task.duration }}",
-            "pause_duration": "{{ task.pause_duration }}"
+            "pauseDuration": "{{ task.pause_duration }}"
             });
         {% endfor %}
-    console.log(tasks);
     </script>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="ml-5 mr-5 mt-5">
         <h3>Filters</h3>
         <div class="row">
-            <div class="col-12 mb-4">
+            <div class="col-6 mb-4">
                 <label for="display-mode-select">Display by:</label>
-                <select class="form-control" id="display-mode-select">
+                <select class="form-control" id="display-mode-select" onchange="drawCurveTypes()">
                     <option>Project</option>
                     <option>Task</option>
+                </select>
+            </div>
+            <div class="col-6 mb-4">
+                <label for="granularity-select">Granularity:</label>
+                <select class="form-control" id="granularity-select" onchange="drawCurveTypes()">
+                    <option>Day</option>
+                    <option>Week</option>
+                    <option>Month</option>
+                    <option>Year</option>
                 </select>
             </div>
             <div class="col-6">
@@ -58,8 +66,7 @@
 </body>
 
 <script type="text/javascript">
-    loadChart();
-    drawCurveTypes();
+    loadChart(tasks);
 </script>
 
 </html>
