@@ -98,20 +98,62 @@ function applyTaskFilter(dates) {
     return dates;
 }
 
+// Converts a "X:XX:XX" duration to a number of hours
+function durationToHours(duration) {
+    const splitted = duration.split(":");
+    return parseInt(splitted[0]) + (parseInt(splitted[1]) / 60);
+}
+
 function accumulateByDisplayMode(dates) {
     console.log("Accumulate by display mode");
-    const ret = [];
+    const ret = accumulateByProject(dates);
 
     console.log(ret);
+    return ret;
+}
+
+function accumulateByProject(dates) {
+    const ret = {columns: [], rows: []};
+
+    // Listing the projects
+    for (let i = 0; i < dates.length; i++) {
+        for (let j = 0; j < dates[i].tasks.length; j++) {
+            if (ret.columns.findIndex(function(column) {return column === dates[i].tasks[j].project}) === -1)
+                ret.columns.push(dates[i].tasks[j].project);
+        }
+    }
+
+    // Accumulating the times
+    for (let i = 0; i < dates.length; i++) {
+        const row = [dates[i].date];
+
+        // Building the histogram
+        for (let j = 0; j < ret.columns.length; j++)
+            row.push(0);
+
+        // Filling the histogram
+        for (let j = 0; j < dates[i].tasks.length; j++) {
+            const task = dates[i].tasks[j];
+            const index = ret.columns.findIndex(function(column) {return column === task.project});
+
+            if (index === -1 || index >= row.length - 1)
+                continue;
+            row[index + 1] += durationToHours(task.duration);
+        }
+
+        ret.rows.push(row);
+    }
+
+    return ret;
+}
+
+function accumulateByTask(dates) {
+    const ret = [];
+
     return dates;
 }
 
 function drawCurveTypes() {
-    const dataTable = new google.visualization.DataTable();
-    dataTable.addColumn('number', 'X');
-    dataTable.addColumn('number', 'Dogs');
-    dataTable.addColumn('number', 'Cats');
-
     // Gets the list of dates containing all the events
     let data = tasksPersistance;
     data = groupTasksByDate(data);
@@ -123,7 +165,24 @@ function drawCurveTypes() {
     data = applyTaskFilter(data);
 
     // Makes the data digest for the chart, regarding the display mode
-    data = accumulateByDisplayMode(data);
+    var columnsRows = accumulateByDisplayMode(data);
+
+    const dataTable = new google.visualization.DataTable();
+
+    // Adding the columns
+    console.log(columnsRows);
+    dataTable.addColumn('date', "Moment");
+    for (let i = 0; i < columnsRows.columns.length; i++) {
+        dataTable.addColumn('number', columnsRows.columns[i]);
+    }
+
+    // Adding the rows
+    dataTable.addRows(columnsRows.rows);
+
+    /*
+    dataTable.addColumn('number', 'X');
+    dataTable.addColumn('number', 'Dogs');
+    dataTable.addColumn('number', 'Cats');
 
     dataTable.addRows([
         [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
@@ -139,14 +198,15 @@ function drawCurveTypes() {
         [60, 64, 56], [61, 60, 52], [62, 65, 57], [63, 67, 59], [64, 68, 60], [65, 69, 61],
         [66, 70, 62], [67, 72, 64], [68, 75, 67], [69, 80, 72]
     ]);
+    */
 
     const options = {
         height: 1000,
         hAxis: {
-            title: 'Time'
+            title: 'Moment of the year'
         },
         vAxis: {
-            title: 'Popularity'
+            title: 'Time spent'
         }};
 
     const chart = new google.visualization.LineChart(document.getElementById('line-chart-container'));
