@@ -22,14 +22,23 @@
     </script>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="ml-5 mr-5 mt-5">
         <h3>Filters</h3>
         <div class="row">
-            <div class="col-12 mb-4">
+            <div class="col-6 mb-4">
                 <label for="display-mode-select">Display by:</label>
-                <select class="form-control" id="display-mode-select">
+                <select class="form-control" id="display-mode-select" onchange="drawCurveTypes()">
                     <option>Project</option>
                     <option>Task</option>
+                </select>
+            </div>
+            <div class="col-6 mb-4">
+                <label for="granularity-select">Granularity:</label>
+                <select class="form-control" id="granularity-select" onchange="drawCurveTypes()">
+                    <option>Day</option>
+                    <option>Week</option>
+                    <option>Month</option>
+                    <option>Year</option>
                 </select>
             </div>
             <div class="col-6">
