@@ -13,13 +13,12 @@
             "id": "{{ task.id }}",
             "name": "{{ task.name }}",
             "project_name": "{{ task.project_name }}",
-            "start_date": "{{ task.start_date }}",
-            "start_time": "{{ task.start_time }}",
+            "startDate": "{{ task.start_date }}",
+            "startTime": "{{ task.start_time }}",
             "duration": "{{ task.duration }}",
-            "pause_duration": "{{ task.pause_duration }}"
+            "pauseDuration": "{{ task.pause_duration }}"
             });
         {% endfor %}
-    console.log(tasks);
     </script>
 </head>
 <body>
@@ -58,8 +57,7 @@
 </body>
 
 <script type="text/javascript">
-    loadChart();
-    drawCurveTypes();
+    loadChart(tasks);
 </script>
 
 </html>

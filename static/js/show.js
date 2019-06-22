@@ -1,17 +1,131 @@
 console.log("OPEN show.js");
 
-function loadChart() {
+let tasksPersistance = null;
+
+function dateToString(date) {
+    var ret = "";
+
+    ret += date.getFullYear().toString();
+    ret += "-";
+
+    if ((date.getMonth() + 1).toString().length === 1)
+        ret += 0;
+    ret += (date.getMonth() + 1).toString();
+    ret += "-";
+
+    if (date.getDate().toString().length === 1)
+        ret += 0;
+    ret += date.getDate().toString();
+
+    return ret;
+}
+
+function loadChart(tasks) {
+    tasksPersistance = tasks;
+
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(drawCurveTypes);
 }
 
-function drawCurveTypes() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'Dogs');
-      data.addColumn('number', 'Cats');
+function groupTasksByDate(tasks) {
+    console.log("Group tasks by date");
+    const dates = [];
 
-      data.addRows([
+    let startDate = new Date(tasks[0].startDate);
+    let endDate = new Date(tasks[0].startDate);
+
+    // Finding the startDate and the endDate
+    for (let i = 0; i < tasks.length; i++) {
+
+        if (dateToString(startDate) > tasks[i].startDate)
+            startDate = new Date(tasks[i].startDate);
+        if (dateToString(endDate) < tasks[i].startDate)
+            endDate = new Date(tasks[i].startDate);
+    }
+
+    // Building the histogram of empty dates
+    let currentDate = new Date(tasks[0].startDate);
+    while (dateToString(currentDate) <= dateToString(endDate)) {
+        dates.push({
+            date: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()),
+            tasks: []
+        });
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    // Putting the tasks in the histogram
+    for (let i = 0; i < tasks.length; i++) {
+        const index = dates.findIndex(function(date) {return dateToString(date.date) === tasks[i].startDate});
+        // Checks if the date of the task is in the dates list
+        if (index >= 0) {
+            dates[index].tasks.push(tasks[i]);
+        }
+    }
+
+    console.log(dates);
+    return dates;
+}
+
+function applyGranularity(dates) {
+    console.log("Apply granularity");
+    const ret = [];
+
+    console.log(ret);
+    return dates;
+}
+
+function applyDateFilters(dates) {
+    console.log("Apply date filters");
+    const ret = [];
+
+    console.log(ret);
+    return dates;
+}
+
+function applyProjectFilter(dates) {
+    console.log("Apply project filter");
+    const ret = [];
+
+    console.log(ret);
+    return dates;
+}
+
+function applyTaskFilter(dates) {
+    console.log("Apply task filter");
+    const ret = [];
+
+    console.log(ret);
+    return dates;
+}
+
+function accumulateByDisplayMode(dates) {
+    console.log("Accumulate by display mode");
+    const ret = [];
+
+    console.log(ret);
+    return dates;
+}
+
+function drawCurveTypes() {
+    const dataTable = new google.visualization.DataTable();
+    dataTable.addColumn('number', 'X');
+    dataTable.addColumn('number', 'Dogs');
+    dataTable.addColumn('number', 'Cats');
+
+    // Gets the list of dates containing all the events
+    let data = tasksPersistance;
+    data = groupTasksByDate(data);
+
+    // Refines the data
+    data = applyGranularity(data);
+    data = applyDateFilters(data);
+    data = applyProjectFilter(data);
+    data = applyTaskFilter(data);
+
+    // Makes the data digest for the chart, regarding the display mode
+    data = accumulateByDisplayMode(data);
+
+    dataTable.addRows([
         [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
         [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
         [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
@@ -24,18 +138,17 @@ function drawCurveTypes() {
         [54, 71, 63], [55, 72, 64], [56, 73, 65], [57, 75, 67], [58, 70, 62], [59, 68, 60],
         [60, 64, 56], [61, 60, 52], [62, 65, 57], [63, 67, 59], [64, 68, 60], [65, 69, 61],
         [66, 70, 62], [67, 72, 64], [68, 75, 67], [69, 80, 72]
-      ]);
+    ]);
 
-      var options = {
-          height: 1000,
+    const options = {
+        height: 1000,
         hAxis: {
-          title: 'Time'
+            title: 'Time'
         },
         vAxis: {
-          title: 'Popularity'
-        }
-      };
+            title: 'Popularity'
+        }};
 
-      var chart = new google.visualization.LineChart(document.getElementById('line-chart-container'));
-      chart.draw(data, options);
+    const chart = new google.visualization.LineChart(document.getElementById('line-chart-container'));
+    chart.draw(dataTable, options);
 }
