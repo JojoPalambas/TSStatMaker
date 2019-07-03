@@ -142,7 +142,13 @@ function durationToHours(duration) {
 }
 
 function accumulateByDisplayMode(dates) {
-    const ret = accumulateByProject(dates);
+    let displayMode = document.getElementById("display-mode-select").value;
+    let ret = [];
+
+    if (displayMode === "Project")
+        ret = accumulateByProject(dates);
+    else if (displayMode === "Task")
+        ret = accumulateByTask(dates);
 
     return ret;
 }
@@ -182,10 +188,43 @@ function accumulateByProject(dates) {
     return ret;
 }
 
-function accumulateByTask(dates) {
-    const ret = [];
+function taskToTaskId(task) {
+    return task.project + " - " + task.name;
+}
 
-    return dates;
+function accumulateByTask(dates) {
+    const ret = {columns: [], rows: []};
+
+    // Listing the projects
+    for (let i = 0; i < dates.length; i++) {
+        for (let j = 0; j < dates[i].tasks.length; j++) {
+            if (ret.columns.findIndex(function(column) {return column === taskToTaskId(dates[i].tasks[j])}) === -1)
+                ret.columns.push(taskToTaskId(dates[i].tasks[j]));
+        }
+    }
+
+    // Accumulating the times
+    for (let i = 0; i < dates.length; i++) {
+        const row = [dates[i].date];
+
+        // Building the histogram
+        for (let j = 0; j < ret.columns.length; j++)
+            row.push(0);
+
+        // Filling the histogram
+        for (let j = 0; j < dates[i].tasks.length; j++) {
+            const task = dates[i].tasks[j];
+            const index = ret.columns.findIndex(function(column) {return column === taskToTaskId(task)});
+
+            if (index === -1 || index >= row.length - 1)
+                continue;
+            row[index + 1] += durationToHours(task.duration);
+        }
+
+        ret.rows.push(row);
+    }
+
+    return ret;
 }
 
 function drawCurveTypes() {
