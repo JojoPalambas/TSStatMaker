@@ -49,8 +49,12 @@
                 <label for="end-date-input">End date:</label>
                 <input type="date" id="end-date-input" value="">
             </div>
-            <div class="col-12 mt-4">
-                <button type="button" class="btn btn-primary" onclick="alert('Filter')">Filter</button>
+            <div class="col-6 mt-4">
+                <label for="project-filter-input">Project name</label>
+                <input type="text" class="form-control" id="project-filter-input" placeholder="My Project">
+            </div>
+            <div class="col-12 mt-2">
+                <button type="button" class="btn btn-primary" onclick="drawCurveTypes()">Filter</button>
             </div>
         </div>
         <hr>

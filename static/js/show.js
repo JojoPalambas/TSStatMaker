@@ -66,7 +66,7 @@ function applyGranularity(dates) {
     let ret = [];
 
     const granularity = document.getElementById("granularity-select").value;
-    if (granularity === "day") {
+    if (granularity === "Day") {
         // Do nothing
         ret = dates;
     }
@@ -78,7 +78,7 @@ function applyGranularity(dates) {
             const index = ret.findIndex(function(row) {return row.date.getMonth() === dates[i].date.getMonth()});
             if (index === -1) {
                 ret.push({
-                    date: new Date(dates[i].date.getFullYear(), dates[i].date.getMonth() + 1, 0),
+                    date: new Date(dates[i].date.getFullYear(), dates[i].date.getMonth(), 1),
                     tasks: dates[i].tasks
                 });
             }
@@ -95,6 +95,8 @@ function applyGranularity(dates) {
         ret = dates;
     }
 
+    console.log(ret);
+
     return ret;
 }
 
@@ -104,10 +106,27 @@ function applyDateFilters(dates) {
     return dates;
 }
 
+// FIXME Make a real project filter
 function applyProjectFilter(dates) {
     const ret = [];
 
-    return dates;
+    const projectFilterName = document.getElementById("project-filter-input").value;
+    if (projectFilterName === "")
+        return dates;
+
+    for (let i = 0; i < dates.length; i++) {
+        ret.push({
+            date: dates[i].date,
+            tasks: []
+        });
+        for (let j = 0; j < dates[i].tasks.length; j++) {
+            let task = dates[i].tasks[j];
+            if (task.project === projectFilterName)
+                ret[i].tasks.push(task);
+        }
+    }
+
+    return ret;
 }
 
 function applyTaskFilter(dates) {
