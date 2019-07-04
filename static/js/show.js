@@ -227,6 +227,26 @@ function accumulateByTask(dates) {
     return ret;
 }
 
+function accumulateRowsIfNeeded(columnsRows) {
+    if (!document.getElementById("accumulate-checkbox").checked)
+        return columnsRows;
+
+    for (let i = 1; i < columnsRows.rows.length; i++) {
+        for (let j = 1; j < columnsRows.rows[i].length; j++) {
+            columnsRows.rows[i][j] += columnsRows.rows[i - 1][j];
+        }
+    }
+
+    return columnsRows;
+}
+
+function addTotalIfNeeded(columnsRows) {
+    if (!document.getElementById("total-checkbox").checked)
+        return columnsRows;
+
+    return columnsRows;
+}
+
 function drawCurveTypes() {
     // Gets the list of dates containing all the events
     let data = tasksPersistance;
@@ -239,7 +259,11 @@ function drawCurveTypes() {
     data = applyTaskFilter(data);
 
     // Makes the data digest for the chart, regarding the display mode
-    const columnsRows = accumulateByDisplayMode(data);
+    let columnsRows = accumulateByDisplayMode(data);
+
+    // Apply post-filters
+    columnsRows = accumulateRowsIfNeeded(columnsRows);
+    columnsRows = addTotalIfNeeded(columnsRows);
 
     const dataTable = new google.visualization.DataTable();
 
