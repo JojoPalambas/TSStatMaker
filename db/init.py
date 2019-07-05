@@ -23,7 +23,8 @@ def reset():
             start_date=line[1],
             start_time=line[2],
             duration=line[3],
-            pause_duration=line[7]
+            pause_duration=line[7],
+            tags=line[8],
         )
         tasks_to_create.append(task)
     Task.objects.bulk_create(tasks_to_create)

@@ -64,7 +64,8 @@ def show(request):
             "start_date": str(rt.start_date),
             "start_time": str(rt.start_time),
             "duration": str(rt.duration),
-            "pause_duration": str(rt.pause_duration)
+            "pause_duration": str(rt.pause_duration),
+            "tags": rt.tags.split(", ")
         })
 
     context = {

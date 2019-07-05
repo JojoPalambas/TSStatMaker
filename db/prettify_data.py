@@ -27,7 +27,8 @@ def simple_table_to_prettified_table(simple_table):
             dc.convert(line[4], "HH:MM:SS"),
             line[6],
             line[8],
-            dc.convert(line[9], "HH:MM:SS")
+            dc.convert(line[10], "HH:MM:SS"),
+            line[9]
         ]
         ret.append(task)
     return ret

@@ -244,6 +244,14 @@ function addTotalIfNeeded(columnsRows) {
     if (!document.getElementById("total-checkbox").checked)
         return columnsRows;
 
+    columnsRows.columns.push("[ALL]");
+    for (let i = 0; i < columnsRows.rows.length; i++) {
+        let accu = 0;
+        for (let j = 1; j < columnsRows.rows[i].length; j++)
+            accu += columnsRows.rows[i][j];
+        columnsRows.rows[i].push(accu);
+    }
+
     return columnsRows;
 }
 

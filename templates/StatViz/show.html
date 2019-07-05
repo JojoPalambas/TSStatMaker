@@ -7,17 +7,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <!-- Translates the Django data to a JavaScript object -->
     <script type="text/javascript">
-        var tasks = [];
+        const tasks = [];
+        let newTask = null;
         {% for task in tasks %}
-            tasks.push({
+            newTask = {
             "id": "{{ task.id }}",
             "name": "{{ task.name }}",
             "project": "{{ task.project_name }}",
             "startDate": "{{ task.start_date }}",
             "startTime": "{{ task.start_time }}",
             "duration": "{{ task.duration }}",
-            "pauseDuration": "{{ task.pause_duration }}"
-            });
+            "pauseDuration": "{{ task.pause_duration }}",
+            "tags": []
+            };
+            {% for tag in task.tags %}
+                newTask.tags.push("{{ tag }}");
+            {% endfor %}
+            tasks.push(newTask);
         {% endfor %}
     </script>
 </head>
@@ -30,6 +36,7 @@
                 <select class="form-control" id="display-mode-select" onchange="drawCurveTypes()">
                     <option>Project</option>
                     <option>Task</option>
+                    <option>Tag</option>
                 </select>
             </div>
             <div class="col-6 mb-4">
@@ -76,6 +83,11 @@
         <hr>
 
         <h3>Histogram</h3>
+        <div id="line-chart-container"></div>
+
+        <hr>
+
+        <h3>Pauses</h3>
         <div id="line-chart-container"></div>
     </div>
 </body>

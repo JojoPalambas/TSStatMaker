@@ -8,6 +8,7 @@ class Task(models.Model):
     start_time = models.TimeField()
     duration = models.DurationField()
     pause_duration = models.DurationField()
+    tags = models.CharField(max_length=1024, default="")
 
     def __str__(self):
         return self.name
