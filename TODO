@@ -1,11 +1,13 @@
-TODO Give the possibility to filter by project
+TODO Fix the Month problem (months are summed up, even from different years)
+
+DONE Give the possibility to filter by project
 TODO Give the possibility to filter by task
 TODO Give the possibility to filter by tag
 
-TODO Give the possibility to filter by dates
+DONE Give the possibility to filter by dates
 
-TODO Give the possibility to display by project
-TODO Give the possibility to display by task
+DONE Give the possibility to display by project
+DONE Give the possibility to display by task
 TODO Give the possibility to display by tag
 TODO Give the possibility to display by pause (time of each kind of pause)
 
@@ -14,6 +16,6 @@ TODO Give the possibility to set the granularity of the data by week
 DONE Give the possibility to set the granularity of the data by month
 TODO Give the possibility to set the granularity of the data by year
 
-TODO Add an ALL line, adding everything
+DONE Add an ALL line, adding everything
 
 TODO Add an histogram (and / or pie chart) summarizing all the displayed data

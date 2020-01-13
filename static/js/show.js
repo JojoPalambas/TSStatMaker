@@ -75,7 +75,11 @@ function applyGranularity(dates) {
     }
     else if (granularity === "Month") {
         for (let i = 0; i < dates.length; i++) {
-            const index = ret.findIndex(function(row) {return row.date.getMonth() === dates[i].date.getMonth()});
+            console.log();
+            const index = ret.findIndex(function (row) {
+                return row.date.getMonth() === dates[i].date.getMonth() &&
+                    row.date.getFullYear() === dates[i].date.getFullYear();
+            });
             if (index === -1) {
                 ret.push({
                     date: new Date(dates[i].date.getFullYear(), dates[i].date.getMonth(), 1),
@@ -149,6 +153,8 @@ function accumulateByDisplayMode(dates) {
         ret = accumulateByProject(dates);
     else if (displayMode === "Task")
         ret = accumulateByTask(dates);
+    else if (displayMode === "Tag")
+        ret = accumulateByTag(dates);
 
     return ret;
 }
@@ -223,6 +229,48 @@ function accumulateByTask(dates) {
 
         ret.rows.push(row);
     }
+
+    return ret;
+}
+
+function accumulateByTag(dates) {
+    const ret = {columns: [], rows: []};
+    console.log(ret);
+
+    // Listing the tags
+    for (let i = 0; i < dates.length; i++) {
+        for (let j = 0; j < dates[i].tasks.length; j++) {
+            for (let k = 0; k < dates[i].tasks[j].tags.length; k++) {
+                if (ret.columns.findIndex(function(column) {return column === dates[i].tasks[j].tags[k]}) === -1)
+                    ret.columns.push(dates[i].tasks[j].tags[k]);
+            }
+        }
+    }
+    console.log(ret);
+
+    // Accumulating the times
+    for (let i = 0; i < dates.length; i++) {
+        const row = [dates[i].date];
+
+        // Building the histogram
+        for (let j = 0; j < ret.columns.length; j++)
+            row.push(0);
+
+        // Filling the histogram
+        for (let j = 0; j < dates[i].tasks.length; j++) {
+            for (let k = 0; k < dates[i].tasks[j].tags.length; k++) {
+                const tag = dates[i].tasks[j].tags[k];
+                const index = ret.columns.findIndex(function(column) {return column === tag});
+
+                if (index === -1 || index >= row.length - 1)
+                    continue;
+                row[index + 1] += durationToHours(dates[i].tasks[j].duration);
+            }
+        }
+
+        ret.rows.push(row);
+    }
+    console.log(ret);
 
     return ret;
 }
